@@ -1,0 +1,14 @@
+</main>
+<footer class="site-footer">
+    <div class="footer-inner">
+        <div class="footer-brand">🦷 Sunrise Dental Clinic</div>
+        <div>
+            123 Dental Avenue, Colombo &nbsp;|&nbsp;
+            <a href="tel:+94112345678">011 234 5678</a> &nbsp;|&nbsp;
+            <a href="mailto:info@sunrisedental.lk">info@sunrisedental.lk</a>
+        </div>
+        <div>&copy; <c:out value="${pageContext.request.serverName != null ? '2026' : '2026'}" /> Sunrise Dental Clinic. All rights reserved.</div>
+    </div>
+</footer>
+</body>
+</html>

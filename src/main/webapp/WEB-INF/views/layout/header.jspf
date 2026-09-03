@@ -1,0 +1,54 @@
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<c:set var="ctx" value="${pageContext.request.contextPath}" />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sunrise Dental Clinic - Patient and Appointment Management System">
+    <title><c:out value="${pageTitle != null ? pageTitle : 'Sunrise Dental Clinic'}" /> | Sunrise Dental Clinic</title>
+    <link rel="stylesheet" href="${ctx}/assets/css/style.css">
+</head>
+<body>
+<c:if test="${not empty sessionScope.user}">
+<header class="site-header">
+    <div class="header-inner">
+        <a href="${ctx}/dashboard" class="brand">
+            <div class="brand-logo">🦷</div>
+            <div class="brand-text">
+                Sunrise Dental Clinic
+                <span>Quality Care, Bright Smiles</span>
+            </div>
+        </a>
+        <button type="button" class="nav-toggle" id="navToggle" aria-label="Toggle navigation">☰</button>
+        <nav class="main-nav" id="mainNav">
+            <ul>
+                <li><a href="${ctx}/dashboard" class="${activeNav == 'dashboard' ? 'active' : ''}">Dashboard</a></li>
+                <li><a href="${ctx}/patients" class="${activeNav == 'patients' ? 'active' : ''}">Patients</a></li>
+                <li><a href="${ctx}/appointments" class="${activeNav == 'appointments' ? 'active' : ''}">Appointments</a></li>
+                <c:if test="${sessionScope.user.role == 'DENTIST'}">
+                    <li><a href="${ctx}/treatments" class="${activeNav == 'treatments' ? 'active' : ''}">Treatments</a></li>
+                </c:if>
+               <c:if test="${sessionScope.user.role == 'RECEPTIONIST'}">
+    <li><a href="${ctx}/bills" class="${activeNav == 'bills' ? 'active' : ''}">Bills</a></li>
+    <li><a href="${ctx}/payments" class="${activeNav == 'payments' ? 'active' : ''}">Payments</a></li>
+    <li><a href="${ctx}/reports" class="${activeNav == 'reports' ? 'active' : ''}">Reports</a></li>
+</c:if>
+<li><a href="${ctx}/help" class="${activeNav == 'help' ? 'active' : ''}">Help</a></li>
+            </ul>
+        </nav>
+        <div class="header-user">
+            <span><c:out value="${sessionScope.user.fullName}" /></span>
+            <span class="user-badge"><c:out value="${sessionScope.user.role}" /></span>
+            <a href="${ctx}/logout" class="btn-logout">Logout</a>
+        </div>
+    </div>
+</header>
+<script>
+    document.getElementById('navToggle')?.addEventListener('click', function() {
+        document.getElementById('mainNav').classList.toggle('open');
+    });
+</script>
+</c:if>
+<main class="main-content">

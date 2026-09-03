@@ -1,0 +1,4 @@
+db.url=jdbc:mysql://127.0.0.1:3306/sunrise_dental_clinic?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Colombo
+db.username=root
+db.password=YOUR_MYSQL_PASSWORD
+db.driver=com.mysql.cj.jdbc.Driver
